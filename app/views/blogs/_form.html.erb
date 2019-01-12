@@ -11,6 +11,16 @@
     </div>
   <% end %>
 
+  <div class="title">
+    <%= form.label :ブログタイトル %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="pagelink">
+    <%= form.label :url %>
+    <%= form.text_field :pagelink %>
+  </div>
+
   <div class="field">
     <%= form.label :start_time %>
     <%= form.datetime_select :start_time %>

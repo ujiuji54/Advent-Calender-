@@ -1,28 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Blogs</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Start time</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @blogs.each do |blog| %>
-      <tr>
-        <td><%= blog.start_time %></td>
-        <td><%= link_to 'Show', blog %></td>
-        <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-        <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<h1>Advent Calendar ∞</h1>
 
 <%= link_to 'New Blog', new_blog_path %>
 
@@ -31,7 +9,33 @@
 
   <% blogs.each do |blog| %>
     <div>
-      <%= blog.name %>
+      <%= blog.title %> <br>
+      <%= link_to blog.pagelink, blog.pagelink %>
     </div>
   <% end %>
 <% end %>
+
+<br>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start time</th>
+      <th>Title<th>
+      <th>URL</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @blogs.each do |blog| %>
+      <tr>
+        <td><%= blog.start_time %></td>
+        <td><%= blog.title %></td>
+        <td><%= link_to blog.pagelink, blog.pagelink %></td>
+        <td><%= link_to 'Show', blog %></td>
+        <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
+        <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
