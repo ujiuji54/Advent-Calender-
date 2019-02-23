@@ -1,3 +1,18 @@
+<header>
+  <nav>
+    <% if user_signed_in? %>
+      <strong><%= link_to current_user.email %></strong>
+      <!--
+      <%= link_to 'プロフィール変更', edit_user_registration_path %>
+      -->
+      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to 'サインアップ', new_user_registration_path %>
+      <%= link_to 'ログイン', new_user_session_path %>
+    <% end %>
+  </nav>
+</header>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Advent Calendar ∞</h1>
@@ -31,6 +46,7 @@
       <tr>
         <td><%= blog.start_time %></td>
         <td><%= blog.title %></td>
+        <td><%= blog.user.email %></td>
         <td><%= link_to blog.pagelink, blog.pagelink %></td>
         <td><%= link_to 'Show', blog %></td>
         <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
