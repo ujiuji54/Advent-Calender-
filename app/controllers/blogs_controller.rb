@@ -11,6 +11,7 @@ class BlogsController < ApplicationController
   # GET /blogs/1
   # GET /blogs/1.json
   def show
+    auther_user_access
   end
 
   # GET /blogs/new
@@ -20,6 +21,7 @@ class BlogsController < ApplicationController
 
   # GET /blogs/1/edit
   def edit
+    auther_user_access
   end
 
   # POST /blogs
@@ -56,10 +58,15 @@ class BlogsController < ApplicationController
   # DELETE /blogs/1
   # DELETE /blogs/1.json
   def destroy
-    @blog.destroy
     respond_to do |format|
-      format.html { redirect_to blogs_url, notice: 'Blog was successfully destroyed.' }
-      format.json { head :no_content }
+      if current_user != @blog.user
+        format.html { redirect_to blogs_url, notice: '他ユーザーの投稿です' }
+        format.json { head :no_content }
+      else
+        @blog.destroy
+        format.html { redirect_to blogs_url, notice: 'Blog was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -72,5 +79,12 @@ class BlogsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_params
       params.require(:blog).permit(:title, :pagelink, :start_time)
+    end
+
+    def auther_user_access
+      if current_user != @blog.user
+        flash[:notice] = "他ユーザーの投稿です"
+        redirect_to blogs_url
+      end
     end
 end
