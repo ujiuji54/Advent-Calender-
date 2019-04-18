@@ -23,8 +23,7 @@
   <% blogs.each do |blog| %>
     <div>
       <%= blog.user.user_name %> <br>
-      <%= blog.title %> <br>
-      <%= link_to blog.pagelink, blog.pagelink %>
+      <%= link_to blog.title, blog.pagelink %>
     </div>
   <% end %>
 <% end %>
