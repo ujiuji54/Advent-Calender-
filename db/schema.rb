@@ -13,13 +13,13 @@
 ActiveRecord::Schema.define(version: 2019_02_24_085212) do
 
   create_table "blogs", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
     t.datetime "start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "title"
     t.string "pagelink"
     t.integer "user_id"
-    t.string "user_email"
   end
 
   create_table "users", force: :cascade do |t|
