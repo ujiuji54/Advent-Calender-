@@ -43,7 +43,7 @@
   <tbody>
     <% @blogs.each do |blog| %>
       <tr>
-        <td><%= blog.start_time %></td>
+        <td><%= blog.start_time.to_date %></td>
         <td><%= blog.title %></td>
         <td><%= blog.user.user_name %></td>
         <td><%= link_to blog.pagelink, blog.pagelink %></td>
