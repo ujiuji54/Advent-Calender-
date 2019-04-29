@@ -21,7 +21,7 @@ set :deploy_to, "/var/www/rails/Advent-Calender-"
 # set :pty, true
 
 # Default value for :linked_files is []
-# append :linked_files, "config/database.yml"
+append :linked_files, "config/database.yml", "config/master.key"
 set :linked_files, fetch(:linked_files, []).push('config/settings.yml')
 
 # Default value for linked_dirs is []

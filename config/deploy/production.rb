@@ -41,7 +41,7 @@ server "3.18.161.61", user: "ujiuji54", roles: %w{app db web}
 #
 # Global options
 # --------------
-set :ssh_options, keys:"~/.ssh/aws_git_rsa"
+set :ssh_options, keys:"~/.ssh/Adv-C"
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
