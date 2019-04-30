@@ -19,7 +19,7 @@ RSpec.describe BlogsController, type: :controller do
       expect(response).to render_template(:new)
     end
 
-    it '未ログイン時はloginへ' do
+    it '未ログイン時はlogin画面へ' do
       get :new
       expect(response.status).to eq(302)
     end

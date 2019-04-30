@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, :except=>[:index]
+  before_action :authenticate_user!, :except: [:index]
 
   # GET /blogs
   # GET /blogs.json
@@ -70,20 +70,20 @@ class BlogsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_blog
-      @blog = Blog.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_blog
+    @blog = Blog.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def blog_params
-      params.require(:blog).permit(:title, :pagelink, :start_time)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def blog_params
+    params.require(:blog).permit(:title, :pagelink, :start_time)
+  end
 
-    def auther_user_access
-      if current_user != @blog.user
-        flash[:notice] = "他ユーザーの投稿です"
-        redirect_to blogs_url
-      end
+  def auther_user_access
+    if current_user != @blog.user
+      flash[:notice] = "他ユーザーの投稿です"
+      redirect_to blogs_url
     end
+  end
 end
