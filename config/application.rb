@@ -26,5 +26,13 @@ module AdventC
                        request_specs: false
       g.fixture_replacement :factory_bot, dir: "spec/factories"
     end
+
+    #cors
+    #config.x.cors_allowed_origins = ENV.fetch('CORS_ALLOWED_ORIGINS', 'http://localhost:8080')
+    config.action_dispatch.default_headers = {
+      'Access-Control-Allow-Credentials' => 'true',
+      'Access-Control-Allow-Origin' => 'http://localhost:8080', # アクセス元のURL
+      'Access-Control-Request-Method' => '*' # 許可するメソッド（GET,POST,DELETEなど）：'*'は全てのメソッドという意味
+    }
   end
 end
