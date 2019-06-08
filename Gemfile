@@ -77,3 +77,6 @@ gem 'simple_calendar', '~> 2.0'
 # User Authentication
 gem 'devise'
 gem 'omniauth-twitter'
+
+#Serializer
+gem 'active_model_serializers', '~> 0.10.0'

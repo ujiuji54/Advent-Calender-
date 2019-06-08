@@ -4,11 +4,8 @@ class Api::BlogsController < ApplicationController
 
   # GET /blogs.json
   def index
-    render json: serialize_blog
-  end
-
-  def serialize_blog
     date_length = Time.current.since(params[:month].to_i.month).to_date.in_time_zone.all_month
-    Blog.includes(:user).where(start_time: date_length).to_json(includes: :user)
+    render json: Blog.includes(:user).where(start_time: date_length),
+           each_serializer: BlogSerializer
   end
 end
